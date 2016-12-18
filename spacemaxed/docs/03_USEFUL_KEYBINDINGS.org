@@ -1,11 +1,13 @@
 | Mode     | Main Key         | Alt Key     | Function                                      | Description                                                                            |
 |----------+------------------+-------------+-----------------------------------------------+----------------------------------------------------------------------------------------|
 |          | ,                | SPC m       | +major-mode-cmd                               | Opens the "major mode" menu belonging to the current editing mode                      |
+|          | SPC h M          |             | helm-switch-major-mode                        | Brings up a convenient list of all major modes that you can use in the buffer          |
 |          | M-:              |             | eval-expression                               | Opens a Lisp evaluator, offering function argument help and easy code execution        |
 |          | SPC SPC          |             | helm-M-x                                      | Opens a helm session to find and execute a command directly                            |
 |          | SPC [n]          |             | select-window-[n]                             | Quickly move the focus to the given numbered window                                    |
 |          | SPC w w          |             | other-window                                  | Cycle focus between all windows in the current frame                                   |
 |          | SPC w d          |             | delete-window                                 | Closes active window if it isn't the last one, but either way the buffer remains open  |
+|          | SPC u SPC w d    |             |                                               | Closes active window and kills its buffer, which is useful when you're done with it    |
 |          | SPC tab          |             | spacemacs/alternative-buffer                  | Switch between current and last buffer in this window, great for working with 2 files  |
 |          | SPC h o          | SPC o h     | my/help-own-keys                              | Lists all personal keybindings                                                         |
 |          | SPC h d k        | C-h k       | describe-key                                  | See what's bound to a key                                                              |
@@ -54,7 +56,9 @@
 | Evil     | M-q              | SPC j l     | evil-avy-goto-line                            | Jump to line, can be used as Evil motion                                               |
 | Evil     | C-o              |             | evil-execute-in-normal-state                  | Lets you perform a normal-state command while in another mode (like Insert mode)       |
 |          | M-Q              |             | unfill-toggle                                 | Toggle reflow current paragraph or region to fit column limit                          |
-|          | C-x f            |             | set-fill-column                               | Quickly set a new column target, defaults to current column                            |
+|          | C-x f            |             | set-fill-column                               | Quickly set a new column target for fill and autofill, defaults to current column      |
+|          | SPC t F          |             | spacemacs/toggle-auto-fill-mode               | Enable or disable automatic line breaking when fill-limit exceeded                     |
+|          | SPC t f          |             | spacemacs/toggle-fill-column-indicator        | Toggle visual guideline for the column used by fill and autofill                       |
 |          | SPC t 8          |             | spacemacs/toggle-highlight-long-lines         | Warn about long lines (more than 80 columns)                                           |
 |          | SPC t l          |             | spacemacs/toggle-truncate-lines               | Switch between line wrapping or truncation                                             |
 |          | SPC t w          |             | whitespace                                    | Toggle the displaying of whitespace characters                                         |
