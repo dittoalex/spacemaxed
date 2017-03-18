@@ -401,6 +401,9 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
 
+  ;; Set the Emacs customization file path. Must be done here in user-init.
+  (setq custom-file "~/.spacemacs.d/custom.el")
+
   ;; Default all new frames to 90x40 to fit line number + 80 columns of text.
   (add-to-list 'default-frame-alist '(width . 90))
   (add-to-list 'default-frame-alist '(height . 40))
@@ -858,30 +861,8 @@ and which action they replaced (if any)."
 
   ;; Make ec's indicator less obnoxious. We'll see a Cog/"Ec" when loaded.
   (spacemacs|diminish editorconfig-mode " ☼" " Ec")
+
+  ;; Lastly, load custom-file (but only if the file exists).
+  (when (file-exists-p custom-file)
+    (load-file custom-file))
   )
-
-;; THIS SECTION CANNOT BE MOVED TO "custom-file". IT IS HARDCODED BY SPACEMACS!
-;; FOLLOW THE ISSUE HERE: https://github.com/syl20bnr/spacemacs/issues/7891
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (org-plus-contrib neotree helm-projectile evil-mc magit magit-popup git-commit yapfify xterm-color x86-lookup ws-butler with-editor window-numbering which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill toc-org tagedit subatomic256-theme subatomic-theme stickyfunc-enhance srefactor sql-indent spacemacs-theme spaceline smeargle slim-mode shell-pop scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort pug-mode powershell popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el pbcopy paradox osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file nasm-mode multi-term move-text mmm-mode material-theme markdown-toc magit-gitflow macrostep lua-mode lorem-ipsum livid-mode live-py-mode linum-relative link-hint leuven-theme less-css-mode launchctl json-mode js2-refactor js-doc insert-shebang info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-purpose helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag gruvbox-theme google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fzf flycheck-pos-tip flx-ido flatland-theme fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode doom-themes disaster dactyl-mode cython-mode csv-mode company-web company-tern company-statistics company-shell company-c-headers company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow color-identifiers-mode coffee-mode cmake-mode clean-aindent-mode clang-format auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
