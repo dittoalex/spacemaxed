@@ -7,6 +7,7 @@
 |          | SPC [n]          |             | select-window-[n]                             | Quickly move the focus to the given numbered window                                    |
 |          | SPC w w          |             | other-window                                  | Cycle focus between all windows in the current frame                                   |
 |          | SPC w d          |             | delete-window                                 | Closes active window if it isn't the last one, but either way the buffer remains open  |
+| Evil     | C-w              |             |                                               | Shortcut menu with all of the most common window management actions                    |
 |          | SPC u SPC w d    |             |                                               | Closes active window and kills its buffer, which is useful when you're done with it    |
 |          | SPC tab          |             | spacemacs/alternative-buffer                  | Switch between current and last buffer in this window, great for working with 2 files  |
 |          | SPC h o          | SPC o h     | my/help-own-keys                              | Lists all personal keybindings                                                         |
@@ -18,6 +19,8 @@
 |          | C-g              |             |                                               | Abort current Lisp function (useful if frozen) and/or close most recent popup          |
 |          | C-backspace      |             |                                               | The universal Emacs shortcut to delete the previous word on line                       |
 |          | SPC r y          | M-m r y     | helm-show-kill-ring                           | Shows kill ring ("clipboard") history and lets you paste from it                       |
+|          | C-y              |             |                                               | Pastes (yanks) from the Emacs kill ring, this always works where regular paste doesn't |
+|          | M-y              |             |                                               | Usable after C-y (yank), this command cycles through your other kill ring entries      |
 |          | SPC b R          |             | safe-revert-buffer                            | Revert a file buffer to its curent on-disk state                                       |
 |          | SPC f R          |             | rename-current-buffer-file                    | Rename the currently open file buffer on disk                                          |
 |          | SPC b d          |             | kill-this-buffer                              | Asks you about saving changes if necessary, and then closes the buffer                 |
