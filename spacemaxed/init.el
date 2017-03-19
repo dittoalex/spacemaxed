@@ -653,6 +653,12 @@ and which action they replaced (if any)."
   (when (configuration-layer/package-usedp 'magit)
     (add-to-list 'spacemacs-useful-buffers-regexp "^\\*magit"))
 
+  ;; Tell Magit to warn us if commit summary exceeds 50 characters, and to wrap
+  ;; the commit message itself at no more than 72 characters per line.
+  ;; NOTE: The Emacs modeline displays columns with 0 as the first column.
+  (setq git-commit-summary-max-length 50)
+  (setq git-commit-fill-column 72)
+
   ;; Disable Semantic's source referencing in lisp buffers, otherwise it tries
   ;; to parse all Spacemacs source code while you type, which freezes Emacs.
   (add-hook 'semantic-inhibit-functions
