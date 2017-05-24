@@ -91,15 +91,6 @@
    cd ~/.emacs.d && git checkout develop
    #+END_EXAMPLE
 
-** Install the Paintvars layer for Spacemacs
-
-   Until my bugfixes have been merged into the official "colors" layer, just
-   install my alternative layer which contains the same code with a new name.
-
-   #+BEGIN_EXAMPLE
-   git clone https://github.com/SteveJobzniak/spacemacs-private-paintvars.git ~/.spacemacs.d/layers/paintvars
-   #+END_EXAMPLE
-
 ** Launch Emacs (the GUI version) and let it install all packages
 
 ** Restart Emacs to finalize the package installation

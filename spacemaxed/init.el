@@ -76,14 +76,12 @@ values."
      imenu-list
      (git :variables
           git-magit-status-fullscreen t)
-     ;; TODO: replace this with "colors" when my fixes are merged
-     ;; https://github.com/syl20bnr/spacemacs/pull/7945
-     (paintvars :variables
-                paintvars-colorize-identifiers 'all
+     (colors :variables
+                colors-colorize-identifiers 'all
                 ;; Averages of all colors that work for both light & dark
                 ;; themes. The best we can do without per-theme optimizations.
-                paintvars-default-rainbow-identifiers-sat 50
-                paintvars-default-rainbow-identifiers-light 65)
+                colors-default-rainbow-identifiers-sat 50
+                colors-default-rainbow-identifiers-light 65)
      (shell :variables
             shell-default-shell 'ansi-term
             shell-default-term-shell "/bin/bash"
@@ -625,20 +623,20 @@ and which action they replaced (if any)."
 
   ;; Set default per-theme saturation and lightness for rainbow-identifiers.
   ;; These are carefully tweaked for all of my enabled themes.
-  (paintvars/add-theme-sat&light 'leuven '(95 40))
-  (paintvars/add-theme-sat&light 'doom-molokai '(45 80))
-  (paintvars/add-theme-sat&light 'doom-one '(45 80))
-  (paintvars/add-theme-sat&light 'flatland '(50 80))
-  (paintvars/add-theme-sat&light 'gruvbox '(55 80))
-  (paintvars/add-theme-sat&light 'material '(55 90))
-  (paintvars/add-theme-sat&light 'material-light '(70 35))
-  (paintvars/add-theme-sat&light 'sanityinc-tomorrow-blue '(40 95))
-  (paintvars/add-theme-sat&light 'sanityinc-tomorrow-eighties '(30 80))
-  (paintvars/add-theme-sat&light 'spacemacs-light '(60 45))
-  (paintvars/add-theme-sat&light 'spacemacs-dark '(45 70))
-  (paintvars/add-theme-sat&light 'subatomic '(35 90))
-  (paintvars/add-theme-sat&light 'subatomic256 '(30 85))
-  (paintvars/refresh-theme-look)
+  (colors/add-theme-sat&light 'leuven '(95 40))
+  (colors/add-theme-sat&light 'doom-molokai '(45 80))
+  (colors/add-theme-sat&light 'doom-one '(45 80))
+  (colors/add-theme-sat&light 'flatland '(50 80))
+  (colors/add-theme-sat&light 'gruvbox '(55 80))
+  (colors/add-theme-sat&light 'material '(55 90))
+  (colors/add-theme-sat&light 'material-light '(70 35))
+  (colors/add-theme-sat&light 'sanityinc-tomorrow-blue '(40 95))
+  (colors/add-theme-sat&light 'sanityinc-tomorrow-eighties '(30 80))
+  (colors/add-theme-sat&light 'spacemacs-light '(60 45))
+  (colors/add-theme-sat&light 'spacemacs-dark '(45 70))
+  (colors/add-theme-sat&light 'subatomic '(35 90))
+  (colors/add-theme-sat&light 'subatomic256 '(30 85))
+  (colors/refresh-theme-look)
 
 
   ;; ------- GENERAL SETTINGS -------
