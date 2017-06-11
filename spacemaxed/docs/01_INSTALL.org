@@ -73,7 +73,7 @@
 
    #+BEGIN_EXAMPLE
    brew tap railwaycat/emacsmacport
-   brew install emacs-mac --with-gnutls --with-imagemagick --with-modules --with-texinfo --with-xml2 --with-spacemacs-icon
+   brew install emacs-mac --with-gnutls --with-imagemagick --with-modules --with-xml2 --with-spacemacs-icon
    brew linkapps emacs-mac
    #+END_EXAMPLE
 
