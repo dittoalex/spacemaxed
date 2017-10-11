@@ -46,6 +46,8 @@
    brew install fzf # needed for fzf (fuzzy find)
    brew install ag # needed for helm-ag (source greping)
    brew install editorconfig # core library needed for support
+   brew install global --with-pygments --with-ctags --with-sqlite3 # source tagging
+   brew install cscope # needed by some layers for source code searching
    #+END_EXAMPLE
 
 

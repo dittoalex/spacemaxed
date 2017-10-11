@@ -52,6 +52,10 @@ This function should only modify configuration layer settings."
      vimscript
      windows-scripts
 
+     ;; Source code tagging (GNU Global tags)
+     ;; Allows Spacemacs to understand source code definitions or references.
+     gtags
+
      ;; General layers
      neotree
      helm
