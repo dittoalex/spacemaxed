@@ -473,6 +473,27 @@ Do NOT include your Evil leader key in the key pattern."
       (bind-key key def spacemacs-default-map)
       (setq key (pop bindings) def (pop bindings))))
 
+  ;; Helper func which creates your own major-mode rebindings
+  ;; (both via SPC m and via ,) and stores a help reference in
+  ;; your list of personal keys.
+  (defun my/bind-leader-keys-for-major-mode (mode key def &rest bindings)
+    "Works like `spacemacs/set-leader-keys-for-major-mode',
+but also stores the new binding in your list
+of personal rebindings.
+
+Original description: Add KEY and DEF as key bindings under
+`dotspacemacs-major-mode-leader-key' and
+`dotspacemacs-major-mode-emacs-leader-key' for the major-mode
+MODE. MODE should be a quoted symbol corresponding to a valid
+major mode. The rest of the arguments are treated exactly like
+they are in `spacemacs/set-leader-keys'."
+    (let* ((map (intern (format "spacemacs-%s-map" mode))))
+      (when (spacemacs//init-leader-mode-map mode map)
+        (while key
+          ;; we replaced define-key with bind-key, to log the result.
+          (eval `(bind-key key def ,map))
+          (setq key (pop bindings) def (pop bindings))))))
+
   ;; Helper func which binds something in all evil states
   ;; and stores a help reference in your list of personal keys.
   (defun my/bind-key-evil-noninsert-states (key def &rest bindings)
@@ -840,6 +861,27 @@ and which action they replaced (if any)."
   (with-eval-after-load 'helm
     (bind-key "C-h" 'evil-delete-backward-word helm-map)
     (bind-key "C-u" 'evil-delete-whole-line helm-map))
+
+  ;; PHP-Mode: Set up some awesome shortcuts for efficient PHP development.
+  (spacemacs/declare-prefix-for-mode 'php-mode "mg" "goto")
+  (spacemacs/declare-prefix-for-mode 'php-mode "mp" "php")
+  (my/bind-leader-keys-for-major-mode 'php-mode
+    ;; Generate eldocs for all core built-in PHP functions:
+    "pg" 'php-extras-generate-eldoc
+    ;; Run this every time source changes (new/modified functions and variables):
+    ;; (NOTE: Project needs a ".ac-php-conf.json" file in root dir)
+    "pt" 'ac-php-remake-tags
+    ;; Run this to rebuild ALL tags in case of serious errors:
+    "pT" 'ac-php-remake-tags-all
+    ;; Goto definition for symbol at point:
+    "pp" 'ac-php-find-symbol-at-point
+    ;; Go back through the stack (can be used multiple times).
+    ;; (TIP: Since nothing is bound to capital "p", this also works as ",PP")
+    "pP" 'ac-php-location-stack-back
+    ;; Show details about symbol at point:
+    "pl" 'ac-php-show-tip
+    ;; Find current-word in project (requires cscope):
+    "pf" 'ac-php-cscope-find-egrep-pattern)
 
 
   ;; ------- FINISH WITH ALL CRITICALLY IMPORTANT TEXT SETTINGS -------
