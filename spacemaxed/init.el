@@ -67,7 +67,14 @@ This function should only modify configuration layer settings."
                       ;; Makes Company auto-complete using snippets too,
                       ;; in both the first/only suggestion and in the popup.
                       ;; Just type a snippet name and press Enter!
-                      auto-completion-enable-snippets-in-popup t
+                      ;; TODO: Disabled due to so much annoying garbage inherited
+                      ;; from various default snippets, which then pollutes -> and ::
+                      ;; autocomplete menus as if those class objects contained
+                      ;; the snippets as member variables. Until (if ever) YASnippet
+                      ;; gets support for disabling inheritance of snippets from
+                      ;; parent modes, this will have to stay disabled. It's easy
+                      ;; enough to manually type a snippet and then C-p to activate.
+                      auto-completion-enable-snippets-in-popup nil
                       ;; Load/save snippets via the "snippets" user folder.
                       ;; TODO: You CAN add multiple paths here. But having
                       ;; multiple paths causes auto-complete bug. Must manually
@@ -885,6 +892,9 @@ and which action they replaced (if any)."
     "pl" 'ac-php-show-tip
     ;; Find current-word in project (requires cscope):
     "pf" 'ac-php-cscope-find-egrep-pattern)
+
+  ;; PHP-Mode: Enable autocompletion immediately after :: and ->
+  (setq-default company-php-begin-after-member-access t)
 
 
   ;; ------- FINISH WITH ALL CRITICALLY IMPORTANT TEXT SETTINGS -------
