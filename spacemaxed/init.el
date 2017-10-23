@@ -68,14 +68,16 @@ This function should only modify configuration layer settings."
                       ;; in both the first/only suggestion and in the popup.
                       ;; Just type a snippet name and press Enter!
                       auto-completion-enable-snippets-in-popup t
-                      ;; Load snippets from "snippets" and "snippets-default".
+                      ;; Load/save snippets via the "snippets" user folder.
+                      ;; TODO: You CAN add multiple paths here. But having
+                      ;; multiple paths causes auto-complete bug. Must manually
+                      ;; fix "aya-persist-snippets-dir". See:
+                      ;; https://github.com/syl20bnr/spacemacs/issues/7948
                       ;; Snippet path resolution is done from left to right.
-                      ;; TODO: Having multiple paths causes auto-complete
-                      ;; bug. Must manually fix "aya-persist-snippets-dir".
-                      ;; See: https://github.com/syl20bnr/spacemacs/issues/7948
-                      auto-completion-private-snippets-directory
-                      '("~/.spacemacs.d/snippets/"
-                        "~/.spacemacs.d/snippets-default/"))
+                      ;; auto-completion-private-snippets-directory
+                      ;; '("~/.spacemacs.d/snippets/"
+                      ;;   "~/.spacemacs.d/snippets-default/"))
+                      auto-completion-private-snippets-directory "~/.spacemacs.d/snippets/")
      ibuffer
      imenu-list
      (git :variables
@@ -829,18 +831,19 @@ and which action they replaced (if any)."
     ;; Autocompletion popup: Enable "delete word" shortcut like you'd expect.
     (bind-key "C-w" 'evil-delete-backward-word company-active-map))
 
-  ;; TODO: Remove this workaround when the bug is fixed:
-  ;; This is a workaround for a severe bug in the auto-complete layer's
-  ;; support for multiple include paths. It wrongly sets auto-yasnippet's
-  ;; save-folder to the entire list of paths. So we must correct it to be
-  ;; a single folder where we want to save snippets, otherwise it breaks.
-  (when (configuration-layer/layer-usedp 'auto-completion)
-    ;; The buggy auto-completion layer sets the incorrect value before loading
-    ;; aya. But loading of the actual package is deferred until we call one of
-    ;; its funcs. So we simply replace aya's variable value after the package is
-    ;; loaded, which happens before the func call is performed. That solves it.
-    (with-eval-after-load 'auto-yasnippet
-      (setq aya-persist-snippets-dir "~/.spacemacs.d/snippets/")))
+  ;; NOTE: Commented out because I no longer use multiple snippet dirs.
+  ;; ;; TODO: Remove this workaround when the bug is fixed:
+  ;; ;; This is a workaround for a severe bug in the auto-complete layer's
+  ;; ;; support for multiple include paths. It wrongly sets auto-yasnippet's
+  ;; ;; save-folder to the entire list of paths. So we must correct it to be
+  ;; ;; a single folder where we want to save snippets, otherwise it breaks.
+  ;; (when (configuration-layer/layer-usedp 'auto-completion)
+  ;;   ;; The buggy auto-completion layer sets the incorrect value before loading
+  ;;   ;; aya. But loading of the actual package is deferred until we call one of
+  ;;   ;; its funcs. So we simply replace aya's variable value after the package is
+  ;;   ;; loaded, which happens before the func call is performed. That solves it.
+  ;;   (with-eval-after-load 'auto-yasnippet
+  ;;     (setq aya-persist-snippets-dir "~/.spacemacs.d/snippets/")))
 
   ;; YASnippet: Press <SPC i S m> to create a manual snippet via editor.
   (defun my/manual-snippet ()
