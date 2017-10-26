@@ -148,6 +148,7 @@ This function should only modify configuration layer settings."
      flatland-theme
      gruvbox-theme
      material-theme
+     monokai-theme
      color-theme-sanityinc-tomorrow
      subatomic-theme
      subatomic256-theme
@@ -232,6 +233,7 @@ It should only modify the values of Spacemacs settings."
                          gruvbox
                          material
                          material-light
+                         monokai
                          sanityinc-tomorrow-blue
                          sanityinc-tomorrow-eighties
                          spacemacs-light
@@ -688,6 +690,7 @@ and which action they replaced (if any)."
   (colors/add-theme-sat&light 'gruvbox '(55 80))
   (colors/add-theme-sat&light 'material '(55 90))
   (colors/add-theme-sat&light 'material-light '(70 35))
+  (colors/add-theme-sat&light 'monokai '(50 70))
   (colors/add-theme-sat&light 'sanityinc-tomorrow-blue '(40 95))
   (colors/add-theme-sat&light 'sanityinc-tomorrow-eighties '(30 80))
   (colors/add-theme-sat&light 'spacemacs-light '(60 45))
