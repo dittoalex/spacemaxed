@@ -120,6 +120,15 @@
    diff -u ~/.emacs.d/core/templates/.spacemacs.template ~/.spacemacs.d/init.el
    #+END_EXAMPLE
 
+   There's also a very easy way to check what has changed between template
+   versions. Just look for the =git= line that says something like
+   =e2a45e0c..36c15b79 develop -> origin/develop=. It shows which revisions
+   you have just moved between. Then just diff the template between them:
+
+   #+BEGIN_EXAMPLE
+   git diff e2a45e0c..36c15b79 core/templates/.spacemacs.template 
+   #+END_EXAMPLE
+
 
 * Uninstalling Spacemacs
 
