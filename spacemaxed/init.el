@@ -184,6 +184,13 @@ It should only modify the values of Spacemacs settings."
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    ;; (default 5)
    dotspacemacs-elpa-timeout 5
+   ;; If non-nil then Spacelpa repository is the primary source to install
+   ;; a locked version of packages. If nil then Spacemacs will install the lastest
+   ;; version of packages from MELPA. (default nil)
+   dotspacemacs-use-spacelpa nil
+   ;; If non-nil then verify the signature for downloaded Spacelpa archives.
+   ;; (default nil)
+   dotspacemacs-verify-spacelpa-archives nil
    ;; If non-nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
@@ -191,8 +198,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-check-for-update t
    ;; If non-nil, a form that evaluates to a package directory. For example, to
    ;; use different package directories for different Emacs versions, set this
-   ;; to `emacs-version'. (default nil)
-   dotspacemacs-elpa-subdirectory nil
+   ;; to `emacs-version'. (default 'emacs-version)
+   dotspacemacs-elpa-subdirectory 'emacs-version
    ;; One of `vim', `emacs' or `hybrid'.
    ;; `hybrid' is like `vim' except that `insert state' is replaced by the
    ;; `hybrid state' with `emacs' key bindings. The value can also be a list
@@ -456,6 +463,13 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; Default all new frames to 90x40 to fit line number + 80 columns of text.
   (add-to-list 'default-frame-alist '(width . 90))
   (add-to-list 'default-frame-alist '(height . 40))
+
+  ;; Disable their SpacELPA "stable repository" (~/.emacs.d/.cache/stable-elpa),
+  ;; since it sucks to be tied to buggy old versions until Spacemacs team syncs.
+  ;; NOTE: This command is official, from the Spacemacs "release notes".
+  (setq configuration-layer-elpa-archives '(("melpa" . "melpa.org/packages/")
+                                            ("org" . "orgmode.org/elpa/")
+                                            ("gnu" . "elpa.gnu.org/packages/")))
   )
 
 (defun dotspacemacs/user-config ()
